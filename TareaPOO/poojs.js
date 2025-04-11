@@ -1,55 +1,55 @@
-class Vehiculo {
-    constructor(marca, modelo, anio) {
-        this.marca = marca;
-        this.modelo = modelo;
-        this.anio = anio;
-        this.velocidad = 0;
+class Vehicle {
+    constructor(brand, model, year) {
+        this.brand = brand;
+        this.model = model;
+        this.year = year;
+        this.speed = 0;
     }
 
-    acelerar(cantidad) {
-        this.velocidad += cantidad;
+    accelerate(amount) {
+        this.speed += amount;
     }
 
-    frenar(cantidad) {
-        this.velocidad = Math.max(0, this.velocidad - cantidad);
+    brake(amount) {
+        this.speed = Math.max(0, this.speed - amount);
     }
 
-    detalles() {
-        return `${this.marca} ${this.modelo} (${this.anio}) - Velocidad: ${this.velocidad} km/h`;
-    }
-}
-
-// Clase Auto que hereda de Vehiculo
-class Auto extends Vehiculo {
-    constructor(marca, modelo, anio, puertas) {
-        super(marca, modelo, anio);
-        this.puertas = puertas;
-    }
-
-    detalles() {
-        return `${super.detalles()} - Puertas: ${this.puertas}`;
+    details() {
+        return `${this.brand} ${this.model} (${this.year}) - Speed: ${this.speed} km/h`;
     }
 }
 
-// Clase Moto que hereda de Vehiculo
-class Moto extends Vehiculo {
-    constructor(marca, modelo, anio, tipoManillar) {
-        super(marca, modelo, anio);
-        this.tipoManillar = tipoManillar;
+// Car class that inherits from Vehicle
+class Car extends Vehicle {
+    constructor(brand, model, year, doors) {
+        super(brand, model, year);
+        this.doors = doors;
     }
 
-    detalles() {
-        return `${super.detalles()} - Manillar: ${this.tipoManillar}`;
+    details() {
+        return `${super.details()} - Doors: ${this.doors}`;
     }
 }
 
-// Crear instancias y probar métodos
-const auto1 = new Auto("Toyota", "Corolla", 2020, 4);
-const moto1 = new Moto("Yamaha", "MT-07", 2021, "deportivo");
+// Motorcycle class that inherits from Vehicle
+class Motorcycle extends Vehicle {
+    constructor(brand, model, year, handlebarType) {
+        super(brand, model, year);
+        this.handlebarType = handlebarType;
+    }
 
-auto1.acelerar(50);
-moto1.acelerar(30);
-auto1.frenar(10);
+    details() {
+        return `${super.details()} - Handlebar: ${this.handlebarType}`;
+    }
+}
 
-console.log(auto1.detalles()); // "Toyota Corolla (2020) - Velocidad: 40 km/h - Puertas: 4"
-console.log(moto1.detalles()); // "Yamaha MT-07 (2021) - Velocidad: 30 km/h - Manillar: deportivo"
+// Create instances and test methods
+const car1 = new Car("Toyota", "Corolla", 2020, 4);
+const motorcycle1 = new Motorcycle("Yamaha", "MT-07", 2021, "sport");
+
+car1.accelerate(50);
+motorcycle1.accelerate(30);
+car1.brake(10);
+
+console.log(car1.details());      // "Toyota Corolla (2020) - Speed: 40 km/h - Doors: 4"
+console.log(motorcycle1.details()); // "Yamaha MT-07 (2021) - Speed: 30 km/h - Handlebar: sport"
