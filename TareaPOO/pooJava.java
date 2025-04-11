@@ -1,74 +1,74 @@
-package Test;
+package TareaPOO;
 
-public class Test {
+public class pooJava {
     public static void main(String[] args) {
-        Auto auto1 = new Auto("Toyota", "Corolla", 2020, 4);
-        Moto moto1 = new Moto("Yamaha", "MT-07", 2021, "deportivo");
+        Car car1 = new Car("Toyota", "Corolla", 2020, 4);
+        Motorcycle motorcycle1 = new Motorcycle("Yamaha", "MT-07", 2021, "sport");
 
-        auto1.acelerar(50);
-        moto1.acelerar(30);
-        auto1.frenar(10);
+        car1.accelerate(50);
+        motorcycle1.accelerate(30);
+        car1.brake(10);
 
-        auto1.detalles();
-        moto1.detalles();
+        car1.details();
+        motorcycle1.details();
     }
 }
 
-// Clase base
-class Vehiculo {
-    String marca;
-    String modelo;
-    int anio;
-    int velocidad;
+// Base class
+class Vehicle {
+    String brand;
+    String model;
+    int year;
+    int speed;
 
-    public Vehiculo(String marca, String modelo, int anio) {
-        this.marca = marca;
-        this.modelo = modelo;
-        this.anio = anio;
-        this.velocidad = 0;
+    public Vehicle(String brand, String model, int year) {
+        this.brand = brand;
+        this.model = model;
+        this.year = year;
+        this.speed = 0;
     }
 
-    public void acelerar(int cantidad) {
-        velocidad += cantidad;
+    public void accelerate(int amount) {
+        speed += amount;
     }
 
-    public void frenar(int cantidad) {
-        velocidad = Math.max(0, velocidad - cantidad);
+    public void brake(int amount) {
+        speed = Math.max(0, speed - amount);
     }
 
-    public void detalles() {
-        System.out.println(marca + " " + modelo + " (" + anio + ") - Velocidad: " + velocidad + " km/h");
+    public void details() {
+        System.out.println(brand + " " + model + " (" + year + ") - Speed: " + speed + " km/h");
     }
 }
 
-// Clase Auto que hereda de Vehiculo
-class Auto extends Vehiculo {
-    int puertas;
+// Car class that inherits from Vehicle
+class Car extends Vehicle {
+    int doors;
 
-    public Auto(String marca, String modelo, int anio, int puertas) {
-        super(marca, modelo, anio);
-        this.puertas = puertas;
+    public Car(String brand, String model, int year, int doors) {
+        super(brand, model, year);
+        this.doors = doors;
     }
 
     @Override
-    public void detalles() {
-        super.detalles();
-        System.out.println("Puertas: " + puertas);
+    public void details() {
+        super.details();
+        System.out.println("Doors: " + doors);
     }
 }
 
-// Clase Moto que hereda de Vehiculo
-class Moto extends Vehiculo {
-    String tipoManillar;
+// Motorcycle class that inherits from Vehicle
+class Motorcycle extends Vehicle {
+    String handlebarType;
 
-    public Moto(String marca, String modelo, int anio, String tipoManillar) {
-        super(marca, modelo, anio);
-        this.tipoManillar = tipoManillar;
+    public Motorcycle(String brand, String model, int year, String handlebarType) {
+        super(brand, model, year);
+        this.handlebarType = handlebarType;
     }
 
     @Override
-    public void detalles() {
-        super.detalles();
-        System.out.println("Manillar: " + tipoManillar);
+    public void details() {
+        super.details();
+        System.out.println("Handlebar: " + handlebarType);
     }
 }
