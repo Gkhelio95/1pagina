@@ -1,62 +1,61 @@
-package TareaEvaluable;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws InterruptedException {
         Scanner scanner = new Scanner(System.in);
 
-        int[] numeroAleatorio = {5, 12, 18, 7, 20};
-        boolean acerto = false;
+        int[] secretNumbers = {5, 12, 18, 7, 20};
+        boolean guessedCorrectly = false;
 
-        System.out.println("¡Bienvenido a \"Adivina el Número Secreto\"!");
+        System.out.println("Welcome to \"Guess the Secret Number\"!");
         Thread.sleep(2000);
-        limpiarPantalla();
+        clearScreen();
 
-        System.out.println("Intenta adivinar un número entre 1 y 20. Tienes 3 intentos.");
+        System.out.println("Try to guess a number between 1 and 20. You have 3 attempts.");
         Thread.sleep(2000);
-        limpiarPantalla();
+        clearScreen();
 
-        for (int intento = 1; intento <= 3; intento++) {
-            int numeroUsuario = 0;
-            boolean entradaValida = false;
+        for (int attempt = 1; attempt <= 3; attempt++) {
+            int userNumber = 0;
+            boolean validInput = false;
             
-            // Pedir al usuario que ingrese un número hasta que la entrada sea válida
-            while (!entradaValida) {
-                System.out.print("Intento " + intento + " - Introduce tu número: ");
+            // Ask the user for input until a valid number is entered
+            while (!validInput) {
+                System.out.print("Attempt " + attempt + " - Enter your number: ");
                 try {
-                    numeroUsuario = scanner.nextInt(); // Intentar leer un número
-                    if (numeroUsuario < 1 || numeroUsuario > 20) {
-                        System.out.println("Por favor, introduce un número entre 1 y 20.");
+                    userNumber = scanner.nextInt(); // Try to read a number
+                    if (userNumber < 1 || userNumber > 20) {
+                        System.out.println("Please enter a number between 1 and 20.");
                     } else {
-                        entradaValida = true; // Si la entrada es válida, salir del bucle
+                        validInput = true; // Exit loop if input is valid
                     }
                 } catch (Exception e) {
-                    System.out.println("Entrada inválida. Debes introducir un número.");
-                    scanner.nextLine(); // Limpiar el buffer
+                    System.out.println("Invalid input. You must enter a number.");
+                    scanner.nextLine(); // Clear the buffer
                 }
             }
 
-            for (int numero : numeroAleatorio) {
-                if (numeroUsuario == numero) {
-                    acerto = true;
+            for (int number : secretNumbers) {
+                if (userNumber == number) {
+                    guessedCorrectly = true;
                     break;
                 }
             }
 
-            if (acerto) {
-                System.out.println("¡Correcto! Has adivinado un número secreto.");
+            if (guessedCorrectly) {
+                System.out.println("Correct! You guessed a secret number.");
                 break;
-            } else if (intento < 3) {
-                System.out.println("No has acertado. Intenta de nuevo.");
+            } else if (attempt < 3) {
+                System.out.println("Not correct. Try again.");
             }
         }
 
-        if (!acerto) {
-            System.out.println("Lo siento, no adivinaste ningún número secreto.");
-            System.out.print("Los números eran: [");
-            for (int i = 0; i < numeroAleatorio.length; i++) {
-                System.out.print(numeroAleatorio[i]);
-                if (i < numeroAleatorio.length - 1) {
+        if (!guessedCorrectly) {
+            System.out.println("Sorry, you didn't guess any of the secret numbers.");
+            System.out.print("The secret numbers were: [");
+            for (int i = 0; i < secretNumbers.length; i++) {
+                System.out.print(secretNumbers[i]);
+                if (i < secretNumbers.length - 1) {
                     System.out.print(", ");
                 }
             }
@@ -66,7 +65,7 @@ public class Main {
         scanner.close();
     }
 
-    public static void limpiarPantalla() {
+    public static void clearScreen() {
         for (int i = 0; i < 50; i++) {
             System.out.println();
         }
