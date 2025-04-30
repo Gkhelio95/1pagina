@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Explorador de Usuarios</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      max-width: 800px;
+    }
+    input {
+      padding: 8px;
+      width: 100%;
+      margin-bottom: 20px;
+    }
+    .user {
+      padding: 10px;
+      border: 1px solid #ccc;
+      margin-bottom: 8px;
+      cursor: pointer;
+    }
+    .user:hover {
+      background-color: #f0f0f0;
+    }
+    ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+    li {
+      cursor: pointer;
+      padding: 6px;
+    }
+    li:hover {
+      background-color: #e0e0e0;
+    }
+    #postContent {
+      margin-top: 10px;
+      background: #f9f9f9;
+      padding: 10px;
+      border-left: 3px solid #333;
+    }
+  </style>
+</head>
+<body>
+  <h1>Explorador de Usuarios</h1>
+
+  <input type="text" id="search" placeholder="Buscar por nombre o ciudad..."/>
+
+  <div id="userList"></div>
+
+  <h2>Detalles del Usuario</h2>
+  <p><strong>Teléfono:</strong> <span id="phone"></span></p>
+  <p><strong>Sitio Web:</strong> <span id="website"></span></p>
+  <p><strong>Compañía:</strong> <span id="company"></span></p>
+
+  <h2>Publicaciones</h2>
+  <ul id="posts"></ul>
+
+  <h3>Contenido de la Publicación</h3>
+  <p id="postContent">Haz clic en un título para ver el contenido aquí.</p>
+
+  <script src="API.js"></script>
+</body>
+</html>
